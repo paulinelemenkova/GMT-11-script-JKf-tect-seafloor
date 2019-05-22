@@ -1,6 +1,7 @@
 # Purpose: World tectonic map in Eckert IV equal-area pseudocylindrical projection
 # here: centered Pacific Ocean (180 grad)
 # GMT modules: gmtset, gmtdefaults, pscoast, psxy, pstext, psbasemap, logo, psconvert
+# Unix prog: echo
 # Step-1. Generate a file
 ps=GMT_tect_World.ps
 # Step-2. GMT set up
