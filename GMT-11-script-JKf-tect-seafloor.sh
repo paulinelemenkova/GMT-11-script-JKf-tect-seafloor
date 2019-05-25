@@ -3,7 +3,7 @@
 # GMT modules: gmtset, gmtdefaults, pscoast, psxy, pstext, psbasemap, logo, psconvert
 # Unix prog: echo
 # Step-1. Generate a file
-ps=GMT_tect_World.ps
+ps=GMT_tect_seafloor.ps
 # Step-2. GMT set up
 gmt set FORMAT_GEO_MAP dddF \
     MAP_FRAME_PEN dimgray \
@@ -24,7 +24,7 @@ gmt psbasemap -Rg -JKf180/9i \
 # Step-4. Add coastline, title
 gmt pscoast -R -J -Gpapayawhip -Sazure -W0.25p -Dc \
     -Bpxg30f15a30 -Bpyg10f5a10 \
-    -B+t"Tectonic plates boundaries: World map" \
+    -B+t"Tectonic plates boundaries, global seafloor fabric and magnetic lineation picks" \
     -Vv -O -K >> $ps
 # Step-5. Add tectonic plates
 gmt psxy -R -J TP_Pacific.txt -L -Wthick,red -O -K >> $ps
@@ -44,6 +44,18 @@ gmt psxy -R -J TP_Scotia.txt -L -Wthick,chartreuse1 -O -K >> $ps
 gmt psxy -R -J TP_South_Am.txt -L -Wthick,maroon1 -O -K >> $ps
 gmt psxy -R -J TP_Somali.txt -L -Wthickest,red -O -K >> $ps
 gmt psxy -R -J TP_Okhotsk.txt -L -Wthickest,red -O -K >> $ps
+gmt psxy -R -J GSFML_SF_DZ_KM.gmt -Wthin,green -O -K >> $ps
+gmt psxy -R -J GSFML_SF_ER_KM.gmt -Wthin,cyan -O -K >> $ps
+gmt psxy -R -J GSFML_SF_FZ_JW.gmt -Wthin,red -O -K >> $ps
+gmt psxy -R -J GSFML_SF_FZ_KM.gmt -Wthin,violetred1 -O -K >> $ps
+gmt psxy -R -J GSFML_SF_FZ_MC.gmt -Wthin,purple1 -O -K >> $ps
+gmt psxy -R -J GSFML_SF_FZ_RM.gmt -Wthin,mediumorchid1 -O -K >> $ps
+gmt psxy -R -J GSFML_SF_FZLC_KM.gmt -Wthin,orange -O -K >> $ps
+gmt psxy -R -J GSFML_SF_PR_KM.gmt -Wthin,yellow -O -K >> $ps
+gmt psxy -R -J GSFML_SF_UNCV_KM.gmt -Wthick,white -O -K >> $ps
+gmt psxy -R -J GSFML_SF_VANOM_KM.gmt -Wthin,magenta -O -K >> $ps
+#gmt makecpt -Crainbow -T0/160 > z.cpt
+gmt psxy -R -J GSFML.global.picks.gmt -Sp+gblue -O -K >> $ps
 # Step-6. Add text labels
 echo "-160 7 PA" | gmt pstext -R -J -F+jTL+f10p,Times-Roman,black -O -K >> $ps
 echo "130 20 PS" | gmt pstext -R -J -F+jTL+f10p,Times-Roman,black -O -K >> $ps
@@ -65,4 +77,4 @@ echo "150 55 OK" | gmt pstext -R -J -F+jTL+f10p,Times-Roman,black -O -K >> $ps
 # Step-7. Add logo
 gmt logo -R -J -Dx10.2/-2.7+o0.1i/0.1i+w2c -O >> $ps
 # Step-8. Convert to image file using GhostScript (landscape orientation, 720 dpi)
-gmt psconvert GMT_tect_World.ps -A0.2c -E720 -Tj -Z
+gmt psconvert GMT_tect_seafloor.ps -A0.2c -E720 -Tj -Z
