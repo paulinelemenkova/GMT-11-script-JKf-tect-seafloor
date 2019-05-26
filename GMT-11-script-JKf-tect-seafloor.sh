@@ -79,33 +79,54 @@ echo "50 -10 SO" | gmt pstext -R -J -F+jTL+f10p,Times-Roman,black -O -K >> $ps
 echo "150 55 OK" | gmt pstext -R -J -F+jTL+f10p,Times-Roman,black -O -K >> $ps
 # Step-9. Add slab contours
 gmt makecpt -Crainbow -T0/700/50 -Z > rain.cpt
-gmt psxy -R -J SC_aleutians.txt -Wthinner,red -O -K >> $ps
-gmt psxy -R -J SC_ryukyus.txt -Wthinner,magenta -O -K >> $ps
-gmt psxy -R -J SC_camerica.txt -Wthinner,cyan -O -K >> $ps
-gmt psxy -R -J SC_assam.txt -Wthinner,purple -O -K >> $ps
-gmt psxy -R -J SC_caribbean.txt -Wthinner,orange -O -K >> $ps
-gmt psxy -R -J SC_wphilippines.txt -Wthinner,blue -O -K >> $ps
-gmt psxy -R -J SC_ephilippines.txt -Wthinner,green -O -K >> $ps
-gmt psxy -R -J SC_solomons.txt -Wthinner,yellow -O -K >> $ps
-gmt psxy -R -J SC_vanuatu.txt -Wthinner,yellowgreen -O -K >> $ps
-gmt psxy -R -J SC_sulawesi.txt -Wthinner,slateblue1 -O -K >> $ps
-gmt psxy -R -J SC_ssandwich.txt -Wthinner,orangered -O -K >> $ps
+#gmt psxy -R -J SC_aleutians.txt -Wthinner,red -O -K >> $ps
+gmt psxy -R -J SC_aleutians.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_ryukyus.txt -Wthinner,magenta -O -K >> $ps
+gmt psxy -R -J SC_ryukyus.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_camerica.txt -Wthinner,cyan -O -K >> $ps
+gmt psxy -R -J SC_camerica.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_assam.txt -Wthinner,purple -O -K >> $ps
+gmt psxy -R -J SC_assam.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_caribbean.txt -Wthinner,orange -O -K >> $ps
+gmt psxy -R -J SC_caribbean.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_wphilippines.txt -Wthinner,blue -O -K >> $ps
+gmt psxy -R -J SC_wphilippines.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_ephilippines.txt -Wthinner,green -O -K >> $ps
+gmt psxy -R -J SC_ephilippines.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_solomons.txt -Wthinner,yellow -O -K >> $ps
+gmt psxy -R -J SC_solomons.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_vanuatu.txt -Wthinner,yellowgreen -O -K >> $ps
+gmt psxy -R -J SC_vanuatu.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_sulawesi.txt -Wthinner,slateblue1 -O -K >> $ps
+gmt psxy -R -J SC_sulawesi.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_ssandwich.txt -Wthinner,orangered -O -K >> $ps
+gmt psxy -R -J SC_ssandwich.txt -Sp -Crain.cpt -O -K >> $ps
 #gmt psxy -R -J SC_samerica.txt -Wthinner,dodgerblue -O -K >> $ps
 gmt psxy -R -J SC_samerica.txt -Sp -Crain.cpt -O -K >> $ps
-gmt psxy -R -J SC_nbritain.txt -Wthinner,lightseagreen -O -K >> $ps
-gmt psxy -R -J SC_molucca.txt -Wthinner,darkorange -O -K >> $ps
-gmt psxy -R -J SC_mindanao.txt -Wthin,chartreuse -O -K >> $ps
-gmt psxy -R -J SC_luzon.txt -Wthin,firebrick3 -O -K >> $ps
-gmt psxy -R -J SC_halmahera.txt -Wthin,royalblue1 -O -K >> $ps
+#gmt psxy -R -J SC_nbritain.txt -Wthinner,lightseagreen -O -K >> $ps
+gmt psxy -R -J SC_nbritain.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_molucca.txt -Wthinner,darkorange -O -K >> $ps
+gmt psxy -R -J SC_molucca.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_mindanao.txt -Wthin,chartreuse -O -K >> $ps
+gmt psxy -R -J SC_mindanao.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_luzon.txt -Wthin,firebrick3 -O -K >> $ps
+gmt psxy -R -J SC_luzon.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_halmahera.txt -Wthin,royalblue1 -O -K >> $ps
+gmt psxy -R -J SC_halmahera.txt -Sp -Crain.cpt -O -K >> $ps
 #gmt psxy -R -J SC_marjapkur.txt -Wthinner,chocolate1 -O -K >> $ps
 gmt psxy -R -J SC_marjapkur.txt -Sp -Crain.cpt -O -K >> $ps
 #gmt psxy -R -J SC_indonesia.txt -Wthinner,brown3 -O -K >> $ps
 gmt psxy -R -J SC_indonesia.txt -Sp -Crain.cpt -O -K >> $ps
-gmt psxy -R -J SC_italia.txt -Wthinner,aquamarine1 -O -K >> $ps
-gmt psxy -R -J SC_hindu2.txt -Wthinner,indianred2 -O -K >> $ps
-gmt psxy -R -J SC_hindu1.txt -Wthinner,olivedrab2 -O -K >> $ps
-gmt psxy -R -J SC_hellas.txt -Wthin,darkolivegreen3 -O -K >> $ps
-gmt psxy -R -J SC_tonga.txt -Wthinner,deeppink1 -O -K >> $ps
+#gmt psxy -R -J SC_italia.txt -Wthinner,aquamarine1 -O -K >> $ps
+gmt psxy -R -J SC_italia.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_hindu2.txt -Wthinner,indianred2 -O -K >> $ps
+gmt psxy -R -J SC_hindu2.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_hindu1.txt -Wthinner,olivedrab2 -O -K >> $ps
+gmt psxy -R -J SC_hindu1.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_hellas.txt -Wthin,darkolivegreen3 -O -K >> $ps
+gmt psxy -R -J SC_hellas.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_tonga.txt -Wthinner,deeppink1 -O -K >> $ps
+gmt psxy -R -J SC_tonga.txt -Sp -Crain.cpt -O -K >> $ps
 # Step-10. Add logo
 gmt logo -R -J -Dx10.2/-2.7+o0.1i/0.1i+w2c -O >> $ps
 # Step-11. Convert to image file using GhostScript (landscape orientation, 720 dpi)
