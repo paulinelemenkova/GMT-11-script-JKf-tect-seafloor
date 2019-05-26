@@ -46,6 +46,7 @@ gmt psxy -R -J TP_Scotia.txt -L -Wthick,chartreuse1 -O -K >> $ps
 gmt psxy -R -J TP_South_Am.txt -L -Wthick,maroon1 -O -K >> $ps
 gmt psxy -R -J TP_Somali.txt -L -Wthickest,red -O -K >> $ps
 gmt psxy -R -J TP_Okhotsk.txt -L -Wthickest,red -O -K >> $ps
+# Step-6. Add fracture zones and magnetic anomalies
 gmt psxy -R -J GSFML_SF_DZ_KM.gmt -Wthin,green -O -K >> $ps
 gmt psxy -R -J GSFML_SF_ER_KM.gmt -Wthin,cyan -O -K >> $ps
 gmt psxy -R -J GSFML_SF_FZ_JW.gmt -Wthin,red -O -K >> $ps
@@ -56,13 +57,9 @@ gmt psxy -R -J GSFML_SF_FZLC_KM.gmt -Wthin,orange -O -K >> $ps
 gmt psxy -R -J GSFML_SF_PR_KM.gmt -Wthin,yellow -O -K >> $ps
 gmt psxy -R -J GSFML_SF_UNCV_KM.gmt -Wthick,white -O -K >> $ps
 gmt psxy -R -J GSFML_SF_VANOM_KM.gmt -Wthin,magenta -O -K >> $ps
-#gmt makecpt -Crainbow -T0/160 > z.cpt
-#gmt psxy -R -J GSFML.global.picks.gmt -Sp+gblue -O -K >> $ps
-#gmt psxy -R -J @tut_quakes.ngdc -Wfaint -i4,3,5,6s0.1 -h3 -Scc -Cquakes.cpt -O -K >> $ps
-#gmt psxy -R -J GSFML.global.picks.gmt -Sc0.1c -Wfaint -i6 -Crainbow -O -K >> $ps
+# Step-7. Add magnetic lineation picks (gray-colored)
 gmt psxy -R -J GSFML.global.picks.gmt -Sp -Gdimgray -O -K >> $ps
-gmt psxy -R -J aleutians.txt -Wthickest,red -O -K >> $ps
-# Step-6. Add text labels
+# Step-8. Add text labels
 echo "-160 7 PA" | gmt pstext -R -J -F+jTL+f10p,Times-Roman,black -O -K >> $ps
 echo "130 20 PS" | gmt pstext -R -J -F+jTL+f10p,Times-Roman,black -O -K >> $ps
 echo "15 15 AF" | gmt pstext -R -J -F+jTL+f10p,Times-Roman,black -O -K >> $ps
@@ -80,7 +77,8 @@ echo "-55 -56 SC" | gmt pstext -R -J -F+jTL+f10p,Times-Roman,black -O -K >> $ps
 echo "-58 -10 SA" | gmt pstext -R -J -F+jTL+f10p,Times-Roman,black -O -K >> $ps
 echo "50 -10 SO" | gmt pstext -R -J -F+jTL+f10p,Times-Roman,black -O -K >> $ps
 echo "150 55 OK" | gmt pstext -R -J -F+jTL+f10p,Times-Roman,black -O -K >> $ps
-# Step-7. Add slab contours
+# Step-9. Add slab contours
+gmt makecpt -Crainbow -T0/700/50 -Z > rain.cpt
 gmt psxy -R -J SC_aleutians.txt -Wthinner,red -O -K >> $ps
 gmt psxy -R -J SC_ryukyus.txt -Wthinner,magenta -O -K >> $ps
 gmt psxy -R -J SC_camerica.txt -Wthinner,cyan -O -K >> $ps
@@ -92,20 +90,23 @@ gmt psxy -R -J SC_solomons.txt -Wthinner,yellow -O -K >> $ps
 gmt psxy -R -J SC_vanuatu.txt -Wthinner,yellowgreen -O -K >> $ps
 gmt psxy -R -J SC_sulawesi.txt -Wthinner,slateblue1 -O -K >> $ps
 gmt psxy -R -J SC_ssandwich.txt -Wthinner,orangered -O -K >> $ps
-gmt psxy -R -J SC_samerica.txt -Wthinner,deepskyblue -O -K >> $ps
+#gmt psxy -R -J SC_samerica.txt -Wthinner,dodgerblue -O -K >> $ps
+gmt psxy -R -J SC_samerica.txt -Sp -Crain.cpt -O -K >> $ps
 gmt psxy -R -J SC_nbritain.txt -Wthinner,lightseagreen -O -K >> $ps
 gmt psxy -R -J SC_molucca.txt -Wthinner,darkorange -O -K >> $ps
 gmt psxy -R -J SC_mindanao.txt -Wthin,chartreuse -O -K >> $ps
 gmt psxy -R -J SC_luzon.txt -Wthin,firebrick3 -O -K >> $ps
 gmt psxy -R -J SC_halmahera.txt -Wthin,royalblue1 -O -K >> $ps
-gmt psxy -R -J SC_marjapkur.txt -Wthinner,chocolate1 -O -K >> $ps
-gmt psxy -R -J SC_indonesia.txt -Wthinner,brown3 -O -K >> $ps
+#gmt psxy -R -J SC_marjapkur.txt -Wthinner,chocolate1 -O -K >> $ps
+gmt psxy -R -J SC_marjapkur.txt -Sp -Crain.cpt -O -K >> $ps
+#gmt psxy -R -J SC_indonesia.txt -Wthinner,brown3 -O -K >> $ps
+gmt psxy -R -J SC_indonesia.txt -Sp -Crain.cpt -O -K >> $ps
 gmt psxy -R -J SC_italia.txt -Wthinner,aquamarine1 -O -K >> $ps
 gmt psxy -R -J SC_hindu2.txt -Wthinner,indianred2 -O -K >> $ps
 gmt psxy -R -J SC_hindu1.txt -Wthinner,olivedrab2 -O -K >> $ps
 gmt psxy -R -J SC_hellas.txt -Wthin,darkolivegreen3 -O -K >> $ps
 gmt psxy -R -J SC_tonga.txt -Wthinner,deeppink1 -O -K >> $ps
-# Step-8. Add logo
+# Step-10. Add logo
 gmt logo -R -J -Dx10.2/-2.7+o0.1i/0.1i+w2c -O >> $ps
-# Step-9. Convert to image file using GhostScript (landscape orientation, 720 dpi)
+# Step-11. Convert to image file using GhostScript (landscape orientation, 720 dpi)
 gmt psconvert GMT_tect_seafloor.ps -A0.2c -E720 -Tj -Z
