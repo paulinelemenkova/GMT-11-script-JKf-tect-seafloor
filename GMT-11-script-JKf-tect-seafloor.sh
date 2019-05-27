@@ -26,7 +26,7 @@ gmt psbasemap -Rg -JKf180/9i \
 # Step-4. Add coastline, title
 gmt pscoast -R -J -Gpapayawhip -Sazure -W0.25p -Dl \
     -Bpxg30f15a30 -Bpyg10f5a10 \
-    -B+t"Tectonic plates boundaries, slab contours, global seafloor fabric and magnetic lineation picks" \
+    -B+t"Tectonic plates boundaries, rotation poles, steps, slab contours, global seafloor fabric and magnetic lineation picks" \
     -Vv -O -K >> $ps
 # Step-5. Add tectonic plates
 gmt psxy -R -J TP_Pacific.txt -L -Wthick,red -O -K >> $ps
@@ -46,6 +46,14 @@ gmt psxy -R -J TP_Scotia.txt -L -Wthick,chartreuse1 -O -K >> $ps
 gmt psxy -R -J TP_South_Am.txt -L -Wthick,maroon1 -O -K >> $ps
 gmt psxy -R -J TP_Somali.txt -L -Wthickest,red -O -K >> $ps
 gmt psxy -R -J TP_Okhotsk.txt -L -Wthickest,red -O -K >> $ps
+# add poles of plates rotation: lon/lat coords and Rotation rate (deg./Ma)
+# Data source: http://peterbird.name/publications/2003_PB2002/2003_PB2002.htm
+#gmt makecpt -Crainbow -T0/52/1 -Z > rain.cpt
+#gmt psxy -R -J PB2002_poles.dat.txt -i2,1,3 -Sc0.1c -Crain.cpt -Wthinner -O -K >> $ps
+gmt psxy -R -J PB2002_poles.dat.txt -i2,1,3 -Sc0.1c -Wthinner,red -O -K >> $ps
+gmt makecpt -Crainbow -T0/100/1 -Z > steps.cpt
+#gmt psxy -R -J PB2002_steps.dat.txt -i3,2,6 -Sc0.1c -Wthickest,red -O -K >> $ps
+gmt psxy -R -J PB2002_steps.dat.txt -i3,2,6 -Sc0.1c -Csteps.cpt -Wthinnest -O -K >> $ps
 # Step-6. Add fracture zones and magnetic anomalies
 gmt psxy -R -J GSFML_SF_DZ_KM.gmt -Wthin,green -O -K >> $ps
 gmt psxy -R -J GSFML_SF_ER_KM.gmt -Wthin,cyan -O -K >> $ps
