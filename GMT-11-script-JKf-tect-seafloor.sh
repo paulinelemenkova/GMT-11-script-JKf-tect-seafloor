@@ -1,3 +1,4 @@
+#!/bin/sh
 # Purpose: World map of tectonic plates boundaries, global seafloor fabric, contours of individual coherent tectonic slab bodies and magnetic lineation picks
 # Data source: http://www.soest.hawaii.edu/PT/GSFML/
 # Eckert IV equal-area pseudocylindrical projection
